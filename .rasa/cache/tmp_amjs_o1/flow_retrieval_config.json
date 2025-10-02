@@ -1,0 +1,15 @@
+{
+  "embeddings": {
+    "id": "mistral_embed",
+    "models": [
+      {
+        "provider": "mistral",
+        "model": "mistral-embed",
+        "api_key": "${MISTRAL_API_KEY}"
+      }
+    ]
+  },
+  "num_flows": 20,
+  "turns_to_embed": 1,
+  "should_embed_slots": true
+}

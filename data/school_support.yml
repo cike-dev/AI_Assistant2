@@ -1,0 +1,69 @@
+# flows:
+#   uni_academic_support:
+#     description: Provides uni-specific academic support.
+#     steps:
+#       - action: utter_greet
+#       - set_slots:
+#           - query: user_input
+#       - action: action_trigger_search
+#       # - action: rag_retrieve_uni
+#       - action: utter_response
+
+#       # branch based on slot values, use 'next' and 'if' properties within steps.
+#       - id: check_help
+#         noop: true
+#         next:
+#           - if: slots.query matches "(?i).*help.*"
+#             then: offer_help
+#           - else: no_help_found
+
+#       - id: offer_help
+#         action: utter_offer_help
+
+#       - id: no_help_found
+#         action: utter_no_help_found
+
+
+flows:
+  uni_academic_support:
+    description: Provides university-specific academic support by greeting the user, capturing their support need, searching for resources, and offering help if appropriate.
+    steps:
+      # - action: utter_greet
+      - collect: user_query
+        description: The user's academic support request (e.g., tutoring, exam advice, resources)
+      # - action: utter_acknowledge_query
+      - action: action_trigger_search
+
+      - id: check_help
+        noop: true
+        next:
+          - if: slots.user_query matches "(?i).*help.*"
+            then: offer_help
+          - else: no_help_found
+
+      - id: offer_help
+        action: utter_offer_help
+        next: collect_option
+
+      - id: no_help_found
+        action: utter_no_help_found
+
+      - id: collect_option
+        collect: sch_option
+        description: The user's choice of next step (e.g., more detail, advisor, other)
+        next:
+          - if: slots.sch_option == "more_detail"
+            then: more_detail
+          - if: slots.sch_option == "advisor"
+            then: provide_advisor
+          - else: other_topic
+
+      - id: more_detail
+        # action: action_search_more_detail
+        action: action_trigger_search
+
+      - id: provide_advisor
+        action: utter_advisor_contact
+
+      - id: other_topic
+        action: utter_other_topic

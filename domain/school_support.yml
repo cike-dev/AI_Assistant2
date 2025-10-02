@@ -1,0 +1,54 @@
+version: "3.7"
+
+slots: 
+  sch_option:
+    type: text
+    mappings:
+      - type: from_llm
+
+responses:
+  utter_offer_help:
+    - text: "Would you like more detailed help or to speak with an advisor?"
+      buttons:
+        - title: "More detail"
+          payload: '/SetSlots(sch_option="more_detail")'
+        - title: "Speak with advisor"
+          payload: '/SetSlots(sch_option="advisor")'
+        - title: "Other topic"
+          payload: '/SetSlots(sch_option="other")'
+
+  utter_ask_sch_option:
+    - text: "Please choose an option:"
+      buttons:
+        - title: "More detail"
+          payload: '/SetSlots(sch_option="more_detail")'
+        - title: "Speak with advisor"
+          payload: '/SetSlots(sch_option="advisor")'
+        - title: "Other topic"
+          payload: '/SetSlots(sch_option="other")'
+
+  utter_advisor_contact:
+    - text: "You can reach the university advisor at advisor@university.edu."
+    # implement a logic to retrieve and display advisors' contact
+
+  utter_other_topic:
+    - text: "Please let me know what other topic you'd like support with."
+
+  utter_no_help_found:
+    - text: "I couldn't identify a specific help request. Could you please clarify how I can assist?"
+    - text: "I'm sorry, I can't provide help on that topic right now. Please let me know if you need assistance with something else."
+
+
+actions:
+  - action_search_more_detail
+  # this custom action is not yet defined, commented in school_support.yml
+    
+
+
+
+
+
+
+
+
+    

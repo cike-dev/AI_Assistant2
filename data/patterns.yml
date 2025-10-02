@@ -1,0 +1,31 @@
+flows:
+  pattern_cancel_flow:
+    description: Conversation repair flow that starts when a flow is cancelled or the user wants to end the conversation.
+    steps:
+      - action: action_cancel_flow
+      - action: utter_flow_cancelled_rasa
+
+# flows:
+#   pattern_session_start:
+#     description: Flow for starting the conversation with a greeting and purpose statement
+#     name: pattern session start
+#     steps:
+#       - action: utter_greet_and_purpose
+
+#       - id: choose_support
+#         noop: true
+#         next:
+#           - if: slots.support_type == "academic"
+#             then: link_school_support
+#           - if: slots.support_type == "career"
+#             then: link_career_guide
+#           - else: link_fallback
+      
+#       - id: link_school_support
+#         link: uni_academic_support
+
+#       - id: link_career_guide
+#         link: uni_career_guidance
+
+#       - id: link_fallback
+#         link: fallback

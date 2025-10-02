@@ -1,0 +1,31 @@
+fixtures: []
+metadata: []
+stub_custom_actions: {}
+test_cases:
+- test_case: greet_user_flow_basic
+  steps:
+  - user: "Hello"
+  - utter: utter_greet_and_purpose
+
+- test_case: uni_career_guidance_with_job_query
+  steps:
+  - user: "I need help with job searching"
+  - slot_was_set:
+    - user_query: "I need help with job searching"
+  - utter: utter_job_resources
+  - user: "job_info"
+  - slot_was_set:
+    - job_option: "job_info"
+- test_case: uni_academic_support_with_help_request_more_detail
+  steps:
+  - user: "I need help with my calculus homework"
+  - slot_was_set:
+    - user_query: "I need help with my calculus homework"
+  - utter: utter_offer_help
+  - user: "more_detail"
+  - slot_was_set:
+    - sch_option: "more_detail"
+- test_case: greet_and_academic_support_combined
+  steps:
+  - user: "Hello, I need help with my studies"
+  - utter: utter_greet_and_purpose

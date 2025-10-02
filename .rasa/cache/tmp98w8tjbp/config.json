@@ -1,0 +1,28 @@
+{
+  "priority": 6,
+  "vector_store": {
+    "type": "faiss",
+    "source": "./docs",
+    "threshold": 0.0
+  },
+  "llm": {
+    "id": "gemini_llm",
+    "models": [
+      {
+        "provider": "gemini",
+        "model": "gemini-2.5-flash",
+        "api_key": "${GEMINI_API_KEY}"
+      }
+    ]
+  },
+  "embeddings": {
+    "id": "mistral_embed",
+    "models": [
+      {
+        "provider": "mistral",
+        "model": "mistral-embed",
+        "api_key": "${MISTRAL_API_KEY}"
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+# flows:
+#   welcome:
+#     description: Greets new users and collects their initial support or guidance request.
+#     steps:
+#       - action: utter_greet
+#       - collect: user_query
+#         description: The user's reason for contacting the assistant (e.g., career advice, school support, or other)
+        
+#       - action: utter_acknowledge_query
+
+
+flows:
+  greet_user:
+    description: Trigger this flow when the user greets the assistant, optionally combined with a question or support request. Greet the user, state the assistant's purpose, and guide them to academic or career support.
+    steps:
+      - action: utter_greet_and_purpose
+
+      

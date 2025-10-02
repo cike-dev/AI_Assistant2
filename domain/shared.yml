@@ -1,0 +1,33 @@
+slots:
+  user_query:
+    type: text
+    mappings:
+      - type: from_llm
+
+  support_type:
+    type: text
+    mappings:
+      - type: from_llm
+
+responses:
+  utter_greet_and_purpose:
+    - text: "Hello! I'm your assistant, here to help you with academic or career support. How can I assist you today?"
+      buttons:
+        - title: "Academic Support"
+          payload: '/SetSlots(support_type="academic")'
+        - title: "Career Guidance"
+          payload: '/SetSlots(support_type="career")'
+    # - text: "Hello! I’m here to help with student support or career guidance. How can I assist you today?"
+    # - text: "Hello! How can I help with your career or job questions today?"
+
+  
+  utter_ask_user_query:
+    - text: "What academic support do you need help with?"
+    - text: "Need help with school or career?"
+    
+  utter_acknowledge_query:
+    - text: "Thanks for sharing. Let me find the best way to assist you."
+
+  utter_flow_cancelled_rasa:
+    - text: "Okay, ending our conversation now. If you need more help, feel free to start a new chat."
+        
